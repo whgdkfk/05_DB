@@ -80,15 +80,14 @@ ORDER BY CATEGORY ASC;
 -- 02학번 전주 거주자들의 모임을 만들려고 한다. 
 -- 휴학한 사람들은 제외한 재학중인 학생들의 
 -- 학번, 이름, 주민번호를 조회하는 구문을 작성하시오.
-SELECT STUDENT_NO, STUDENT_NAME, STUDENT_SSN 
-FROM TB_STUDENT;
-
-
-
-
-
-
-
-
-
-
+SELECT 
+		STUDENT_NO
+	, STUDENT_NAME
+	, STUDENT_SSN 
+FROM 
+	TB_STUDENT
+WHERE 
+	SUBSTR(ENTRANCE_DATE, 1, 2) = '02' AND 
+	SUBSTR(STUDENT_ADDRESS, 1, 2) = '전주' AND 
+	ABSENCE_YN = 'N'
+ORDER BY STUDENT_NO ASC; 
