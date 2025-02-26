@@ -174,13 +174,13 @@ HAVING COUNT(*) = (SELECT MIN(COUNT(*)) -- 서브쿼리: 2
 --    서브쿼리의 조회 결과 값의 개수가 여러 행일 때 
 
 /*
-    >> 다중행 서브쿼리 앞에는 일반 비교연산자 사용 x
+    >> 다중행 서브쿼리 앞에는 일반 비교연산자 사용 X
     
     - IN / NOT IN : 여러 개의 결과값 중에서 한 개라도 일치하는 값이 있다면
                     혹은 없다면 이라는 의미(가장 많이 사용!)
-    - > ANY, < ANY : 여러개의 결과값 중에서 한개라도 큰 / 작은 경우
+    - > ANY, < ANY : 여러 개의 결과값 중에서 한 개라도 큰 / 작은 경우
                      가장 작은 값보다 큰가? / 가장 큰 값 보다 작은가?
-    - > ALL, < ALL : 여러개의 결과값의 모든 값보다 큰 / 작은 경우
+    - > ALL, < ALL : 여러 개의 결과값의 모든 값보다 큰 / 작은 경우
                      가장 큰 값 보다 큰가? / 가장 작은 값 보다 작은가?
     - EXISTS / NOT EXISTS : 값이 존재하는가? / 존재하지 않는가?
     
@@ -203,7 +203,7 @@ WHERE SALARY IN (SELECT MAX(SALARY) -- 결과: 7행
 
 
 -- 사수에 해당하는 직원에 대해 조회 
---  사번, 이름, 부서명, 직급명, 구분(사수 / 직원)
+-- 사번, 이름, 부서명, 직급명, 구분(사수 / 직원)
 
 -- 1) 사수에 해당하는 사원 번호 조회
 -- == MANAGER_ID 컬럼에 사번이 작성된 사원
@@ -222,6 +222,8 @@ FROM EMPLOYEE E
 LEFT JOIN DEPARTMENT D ON (E.DEPT_CODE = D.DEPT_ID)
 JOIN JOB J ON (E.JOB_CODE = J.JOB_CODE);
 
+-- 사수에 해당하는 직원에 대해 조회 
+-- 사번, 이름, 부서명, 직급명, 구분(사수 / 직원)
 -- 3) 사수에 해당하는 직원에 대한 정보 추출 조회 (이때, 구분은 '사수'로)
 SELECT 
 		E.EMP_ID	
@@ -242,7 +244,7 @@ SELECT
 	, E.EMP_NAME
 	, NVL(D.DEPT_TITLE, '없음') AS DEPT_TITLE
 	, J.JOB_NAME
-	, '사수' AS 구분
+	, '사원' AS 구분
 FROM EMPLOYEE E
 LEFT JOIN DEPARTMENT D ON (E.DEPT_CODE = D.DEPT_ID)
 JOIN JOB J ON (E.JOB_CODE = J.JOB_CODE)
@@ -271,7 +273,7 @@ SELECT
 	, E.EMP_NAME
 	, NVL(D.DEPT_TITLE, '없음') AS DEPT_TITLE
 	, J.JOB_NAME
-	, '사수' AS 구분
+	, '사원' AS 구분
 FROM EMPLOYEE E
 LEFT JOIN DEPARTMENT D ON (E.DEPT_CODE = D.DEPT_ID)
 JOIN JOB J ON (E.JOB_CODE = J.JOB_CODE)
