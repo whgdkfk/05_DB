@@ -12,7 +12,7 @@ SELECT * FROM USER_TABLES;
 
 -- DDL(Data Definition Language): 데이터 정의 언어
 
--- 객체(Object)를 만들고(CREATE), 수정(ALTER)하고, 삭제(DROP) 등
+-- 객체(Object)를 만들고(CREATE), 수정(ALTER)하고, 삭제(DROP)하는 등
 -- 데이터의 전체 구조를 정의하는 언어로 주로 DB관리자, 설계자가 사용함
 
 -- 오라클에서의 객체: 테이블(TABLE), 뷰(VIEW), 시퀀스(SEQUENCE),
@@ -97,7 +97,7 @@ COMMENT ON COLUMN "MEMBER".MEMBER_NAME IS '회원 이름';
 COMMENT ON COLUMN "MEMBER".MEMBER_SSN IS '회원 주민등록번호';
 COMMENT ON COLUMN "MEMBER".ENROLL_DATE IS '회원 가입일';
 
--- USER_TABLES : 사용자가 작성한 테이블을 확인 하는 뷰
+-- USER_TABLES : 사용자가 작성한 테이블을 확인하는 뷰
 -- 데이터 딕셔너리에 정의되어 있음
 SELECT * FROM USER_TABLES;
 
@@ -108,7 +108,7 @@ DESC MEMBER;
 INSERT INTO "MEMBER"
 VALUES('MEM01', '123ABC', '홍길동', '990226-1234567', SYSDATE);
 
---  데이터  삽입 확인
+-- 데이터 삽입 확인
 SELECT * FROM "MEMBER";
 
 -- 추가 샘플 데이터 삽입
@@ -124,8 +124,7 @@ VALUES('MEM03', '1Q2W3E4R', '박철수', '971002-1234567', DEFAULT);
 -- 가입일 → INSERT 시 미작성 하는 경우 → DEAFULT 값이 반영됨
 INSERT INTO 
 "MEMBER"(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_SSN)
-VALUES
-('MEM04', 'QQQQ2222', '신짱구', '990304-1112223');
+VALUES('MEM04', 'QQQQ2222', '신짱구', '990304-1112223');
 -- ENROLL_DATE 컬럼에 DEFAULT 대입되는지 확인
 
 -- 데이터  삽입 확인
